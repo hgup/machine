@@ -1,0 +1,14 @@
+--- sample1.py	2023-03-21 06:02:04.627443071 +0000
++++ sample2.py	2023-03-21 06:06:46.720189961 +0000
+@@ -1,9 +1,6 @@
+-n = "hello world"
++n = "Cello world"
+ vowels = []
+-count = 0
+ for i in n:
+     if i in "aeiouAEIOU":
+         vowels.append(i)
+-        print('found',i)
+-        count += 1
+-print(vowels, count)
++print(vowels, len(vowels))
