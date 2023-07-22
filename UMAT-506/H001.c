@@ -1,6 +1,5 @@
-
 /*
- * Read and write to variables
+ * Prints a triangle using asterisks
  * AUTHOR: Hursh Gupta
  * WRITTEN ON: 7-17-M
  */
@@ -8,6 +7,5 @@
 #include <stdio.h>
 
 int main() {
-	// scanf
-	// printf
+	return 0;
 }

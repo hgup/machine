@@ -1,8 +1,7 @@
-
 /*
  * 
  * AUTHOR: Hursh Gupta
- * WRITTEN ON: 7-17-M
+ * WRITTEN ON: 
  */
 
 #include <stdio.h>

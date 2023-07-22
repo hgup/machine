@@ -1,5 +1,3 @@
-
-
 /*
  * H002: Finding average of marks in 5 subjects by taking marks from the user.
  * AUTHOR: Hursh Gupta
