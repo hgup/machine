@@ -1,35 +1,27 @@
 /*
- * Product of n integers entered by user. skip the zeros
+ * sum of n terms in GS
  * AUTHOR: Hursh Gupta
- * WRITTEN ON: 
+ * WRITTEN ON: 8.14.23
  */
 
 #include <stdio.h>
 
 int main() {
-
-	int n;
-	printf("Enter number: ");
+	int n, r;
+	printf("Enter terms: ");
 	scanf("%d",&n);
-
-	int in; 		// input
-	int prod = 1; 	// product
-	int i = 1; 		// counter
-
+	printf("Enter common ratio: ");
+	scanf("%d",&r);
+	
+	int sum = 0;
+	int g = 1, i = 0;
+	
 	do{
-		printf("(%d)>\t",i);
-		scanf("%d", &in);
-
-		if (in == 0) {
-			printf(" Skipping Zero ");
-			continue;
-		}
-
+		sum += (g*=r); // multiply g by next i and add it to the sum
 		i++;
-		prod *= in;
+	} while (i < n);
 
-	} while( i <= n);
-
-	printf("The product is %d.\n", prod);
+	printf("Sum is %d.\n",sum);
+	
 	return 0;
 }

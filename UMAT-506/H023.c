@@ -1,38 +1,30 @@
 /*
- * Multiplication from 5 to 9 in separate columns (for) (\t and \n)
+ * Average of atmost n +ve integers, input <= 0 then display average
  * AUTHOR: Hursh Gupta
  * WRITTEN ON: 
  */
 
 #include <stdio.h>
 
-void printLine(int first, int mul, int rowStart, int rowEnd, int hi){
-
-	printf("\e[1m\e[7m%d\e[39m\e[27m",first);
-	
-	switch(hi){
-		case 1:
-			printf("\e[1m\e[7m\t");
-			break;
-		default:
-			printf("\t");
-	}
-	
-	for(int i = rowStart; i <= rowEnd; i++){
-		printf("%d\t",i*mul);
-	}
-	printf("\n\e[39m\e[27m");
-
-}
-
 int main() {
-	int n,m;
-	printf("Enter numbers (separated by space): ");
-	scanf("%d %d", &n, &m);
+	int n;
+	printf("Enter max # of inputs: ");
+	scanf("%d",&n);
+	
+	int in, sum = 0, i = 0;
+	do {
+		
+		scanf("%d", &in);
+		if(in <= 0) break;
 
-	printLine(0, 1, n, m, 1);
-	for (int i = 1; i <= 10; i++){
-		printLine(i, i, n, m, 0);
-	}
+		sum += in;
+		i++;
+	} while (i < n); // end case: i = n (number of terms);
+	
+	if (i != 0)
+		printf("Average: %5.2f\n", sum*1.0/i);
+	else
+		printf("Average not defined on zero numbers\n");
+
 	return 0;
 }
