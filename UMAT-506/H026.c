@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int fact(int);
+long int fact(int);
 int comb(int, int);
 
 void main() {
@@ -16,7 +16,7 @@ void main() {
 	for(int i = 0; i < n; i++){
 		for(int k = i+1; k < n; k++)
 			printf("\t");
-		for(int j = 0; j < i; j++){
+		for(int j = 0; j <= i; j++){
 			c = comb(i,j);
 			printf("%d\t\t",c);
 		}
@@ -24,7 +24,7 @@ void main() {
 	}
 }
 
-int fact(int n){
+long int fact(int n){ // them factorials are quite big (long)
 	int prod = 1;
 	for(int i = 1; i <= n; i++)
 		prod *= i;
@@ -35,3 +35,4 @@ int fact(int n){
 int comb(int n, int r){
 	return (fact(n)/fact(n-r)*fact(r));
 }
+
