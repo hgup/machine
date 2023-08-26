@@ -1,5 +1,6 @@
 /* AUM SRI SAI RAM
  *
+ * checks whether a number is perfect	
  * Date: 8-07-23 (M)
  * Regd: 211219
  */
@@ -9,7 +10,7 @@
 void main(){
 
 	int n; 				// perfect number candidate
-	int sum;			// sum of digits
+	int sum = 0;		// sum of digits
 	
 	// number input
 	printf("Enter number: ");		
