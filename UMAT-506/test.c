@@ -4,6 +4,9 @@
 
 
 void main(){
-    char a[3] = "+";
-    if(!strcmp(a,"+")) printf("okay"); // this gives 0 if equal
+    //char a[3] = "+";
+    //if(!strcmp(a,"+")) printf("okay"); // this gives 0 if equal
+	if (printf("hi")){
+		printf(" prabin");
+		};
 }
