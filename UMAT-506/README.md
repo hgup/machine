@@ -50,3 +50,6 @@
 |H035|(RECURSIVE) Find sum of 1st n natural numbers|
 |H036|(RECURSIVE) find gcd of 2 numbers|
 |H037|(RECURSIVE) sum of digits of positive number using recursion|
+|H038|(ARRAY) Take input (int) and store its multiplication table in an array and print it|
+|H039|(ARRAY) regd # of students contains marks of 5 students|
+|H040|(ARRAY) sort an array of 10 numbers using bubble sort, selection sort and merge sort|
