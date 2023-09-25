@@ -1,14 +1,12 @@
 /*
- * String library in C
+ * String library for C
  * AUTHOR: Hursh Gupta
  * WRITTEN ON: 25-9-M
  */
 
 #include "mystring.h"
-#include <stdio.h>
-#include <string.h>
 
-int mystrlen(const char *str) { // if I don't put const here, it gives warning in strcmp
+unsigned long int mystrlen(const char *str) { // if I don't put const here, it gives warning in strcmp
 	int len = 0;
 	while(*str++) len++;
 	return len;
@@ -52,5 +50,61 @@ void mystrcpy(char *dest, const char *source){
 	*dest = '\0';
 }
 
+void mystrncpy(char *dest, const char *source, size_t size){
+	size_t i = 0;
+	while(*source && i < size){
+		*dest = *source;
+		dest++;
+		source++;
+		i++;
+	}
+	*dest = '\0';
+}
+
+void mystrcat(char *dest, const char *source){
+	dest += mystrlen(dest);
+	while(*source){
+		*dest = *source;
+		dest++;
+		source++;
+	}
+	*dest = '\0';
+}
+
+void mystrncat(char *dest, const char *source, size_t size){
+	size_t i = 0;
+	dest += mystrlen(dest);
+	while(*source && i < size){
+		*dest = *source;
+		dest++;
+		source++;
+		i++;
+	}
+	*dest = '\0';
+}
+
+void altchar(char *str){
+	while(*str){
+		printf("%c",*str);	
+		str+=2;
+	}
+}
+
+char* getsubstr(char *str, int start_pos, int no_of_chars){
+	char sub[no_of_chars];
+	char *sp = sub;
+	str+= start_pos;
+	while(*str){
+		*sp = *str;
+		str++;
+		sp++;
+	}
+	*sp = '\0';
+	sp -= no_of_chars;
+	return sp;
+	// TODO check
+}
+
 int main(){
+	printf("%s", getsubstr("aaaThisaaa",3,4));
 }
