@@ -14,6 +14,8 @@ void mystrcpy(char *, const char *);
 void mystrncpy(char *, const char *, size_t);
 void mystrcat(char *, const char *);
 void mystrncat(char *, const char *, size_t);
+void altchar(char *);
+char* getsubstr(char *, int, int);
 
 
 // NOTE put all the header files of mystring.c here.. e.g. stddef
