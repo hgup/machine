@@ -11,6 +11,14 @@ runC(){
 	gcc $FILE -lm && ./a.out
 }
 
+compileRun(){
+	gcc -c *.c
+	gcc *.o -o ./a.out
+	./a.out
+}
+
+
 alias run="runC"
+alias crun="compileRun"
 
 
