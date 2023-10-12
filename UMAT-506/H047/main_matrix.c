@@ -4,11 +4,17 @@
 
 int main(){
   int r, c; 
-  scanf("%d", &r);
-  scanf("%d", &c);
-  r = ROW || r;
-  c = COL || c;
+  // printf("Enter Rows:");
+  // scanf("%d", &r);
+  // printf("Enter Cols:");
+  // scanf("%d", &c);
+  r = ROW;
+  c = COL;
   double **mtx = allocate(r,c);
-  print_matrix(mtx, 3, 3);
+  read_matrix(mtx, r, c);
+  print_matrix(mtx, r, c);
+  printf("Trace of matrix: %lf\n", trace_matrix(mtx, r));
+  printf("The matrix is%s symmetric\n", check_symmetric_matrix(mtx, r)? "" : " not");
+
   return 0;
 }

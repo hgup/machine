@@ -1,4 +1,5 @@
 #include"matrix.h"
+#include <alloca.h>
 // implement functions in matrix.h here
 
 
@@ -16,24 +17,52 @@ double ** allocate(int r, int c)
 
 //Prints 2-D array a of size r and c
 void print_matrix(double **a, int r, int c){
-  printf("Printing Matrix\n");
+  printf("\nPRINTING MATRIX\n\n\t");
+  for(int i = 0; i < c; i++) printf("[%d]\t\t",i);
+  printf("\n");
   for (int i = 0; i < r; i++) {
+    printf("[%d]\t",i);
     for (int j = 0; j < c; j++)
-      printf("%lf ", *(*(a+i)+j));
-    
+      printf("%lf\t", *(*(a+i)+j));
     printf("\n");
   }
 }
 
 //Inputs 2-D array a of size r and c from user
 void read_matrix(double ** a, int r, int c){
-  printf("Taking Matrix input\n");
+  printf("\nTAKING MATRIX INPUT\n\n");
   for (int i = 0; i < r; i++) {
-    printf("[%d] ",i);
     for (int j = 0; j < c; j++){
-      printf(" ");
+      printf("[%d][%d] ", i,j);
       scanf("%lf", (*(a+i)+j));
     }
-    printf("\n");
   }
+}
+
+//Returns trace of 2-D array a of size r 
+double trace_matrix(double ** a, int r){
+  double trace = 0;
+  for(int i = 0; i < r; i ++){
+    trace += *(*(a+i)+i);
+  }
+  return trace;
+}
+
+//checks  2-D array a of size r is symmetric or not
+int check_symmetric_matrix(double ** a, int r){
+  for(int i = 0; i < r; i++){
+    for(int j = i+1; j < r; j++){
+      if(a[i][j] != a[j][i]) return 0;
+    }
+  }
+  return 1;
+}
+//Computes sum of a and b and returns in new matrx
+double ** add_matrix(double ** a, double ** b, int r, int c){
+  double **sum = allocate(r, c);
+  for(int i = 0; i < r; i++)
+    for (int j = 0; j < r; j++)
+      sum[i][j] = a[i][j] + b[i][j];
+       
+  return sum;
 }
