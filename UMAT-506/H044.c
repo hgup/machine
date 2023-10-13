@@ -25,7 +25,7 @@ int main() {
 	valAndAddr(a, LEN);
 
 	// b
-	for(int i = 0; i < LEN; a[i++] = i);
+	for(int i = 0; i < LEN; i++ ) a[i] = i+1;
 	valAndAddr(a, LEN);
 
 	// c - Yes all four are same
