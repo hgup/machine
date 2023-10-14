@@ -21,6 +21,10 @@ unsigned long int mystrlen(const char *);
  */
 int mystrcmp(const char *string_1, const char *string_2);
 
+/* compares string_1 and string_2 in topological sorting upto N characters
+ */
+int mystrncmp(const char *str1, const char *str2, unsigned long int N);
+
 /* returns a pointer to the beginning of the substring if found in string
  */
 const char* mystrstr(const char *string, const char *substring);

@@ -24,6 +24,18 @@ int mystrcmp(const char *str1, const char *str2) {
 	else return 0;
 }
 
+int mystrncmp(const char *str1, const char *str2, unsigned long int n) {
+  int i = 0;
+	while(*str1 != '\0' && i++ < n)
+		if (*str1++ > *str2++)
+			return -1;
+		else if(*str1 < *str2)
+			return 1;
+	
+	if (*str2 != '\0') return 1; // str2 has bigger length
+	else return 0;
+}
+
 const char* mystrstr(const char *str, const char *sub){
 	int len = mystrlen(sub);
 	int found = 0;
