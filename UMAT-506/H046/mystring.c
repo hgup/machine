@@ -226,6 +226,3 @@ void changeString(char *str){
 	str[2] = 'b';
 }
 
-int main(){
-    
-}
