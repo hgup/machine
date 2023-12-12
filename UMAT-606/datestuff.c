@@ -1,7 +1,6 @@
 #include <stdio.h>
-typedef struct {
-  int year, month, day;
-} date;
+#include "dateTypes.h"
+
 
 date add_years(date a, int year){
   a.year += year;
@@ -100,20 +99,20 @@ date new_date(int y, int m, int d){
   return da;
 }
 
-int main(){
-  date d;
-  // printf("Given Date: ");
-  // d = new_date(2024, 2, 27);
-  // printDate(d);
-  printf("Enter Today's Date: ");
-  d = inputDate();
-  int n;
-  printf("Enter # of days to add: ");
-  scanf("%d",&n);
-  date tomorrow = add_days(d,n);
-  printf("Next date: ");
-  printDate(tomorrow);
-  
-}
-
+// int main(){
+//   date d;
+//   // printf("Given Date: ");
+//   // d = new_date(2024, 2, 27);
+//   // printDate(d);
+//   printf("Enter Today's Date: ");
+//   d = inputDate();
+//   int n;
+//   printf("Enter # of days to add: ");
+//   scanf("%d",&n);
+//   date tomorrow = add_days(d,n);
+//   printf("Next date: ");
+//   printDate(tomorrow);
+//   
+// }
+//
 
