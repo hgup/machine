@@ -1,5 +1,5 @@
 - [x] Complex numbers
-- [ ] prompt for today's date. then calculate tomorrow's date and display it. Change date month and year as necessary
+- [x] prompt for today's date. then calculate tomorrow's date and display it. Change date month and year as necessary
 
 ```c
 typedef struct {
@@ -17,10 +17,10 @@ typedef struct {
 typedef int year;
 typedef struct {
     int regd, cgpa;
-    char grade, Name[40], gender
+    char grade, Name[40], gender;
     date DOB;
     year YOJ;
-}
+} student;
 ```
 - [ ] display student details whose CGPA > average CGPA of all students
 - [ ] print details of a student with given Regd #
