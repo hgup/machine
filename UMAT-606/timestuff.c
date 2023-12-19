@@ -78,25 +78,25 @@ time inputTime(time s){
   return s;
 }
 
-void printTime(time s){
-  printf("\n%d:%d:%d\n",s.hour, s.min, s.sec);
-}
-
-int main() {
-  time a, b;
-  printf("TIME 1:\n");
-  a = inputTime(a);
-  printf("TIME 2:\n");
-  inputTime(b);
-  printTime(a);
-  printTime(b);
-  time sum = add_time(a,b);
-  printf("\nSum of the times: ");
-  printTime(sum);
-  time dif = sub_time(a,b);
-  printf("\nDif of the times: ");
-  printTime(dif);
-
-}
-
-
+// void printTime(time s){
+//   printf("\n%d:%d:%d\n",s.hour, s.min, s.sec);
+// }
+//
+// int main() {
+//   time a, b;
+//   printf("TIME 1:\n");
+//   a = inputTime(a);
+//   printf("TIME 2:\n");
+//   inputTime(b);
+//   printTime(a);
+//   printTime(b);
+//   time sum = add_time(a,b);
+//   printf("\nSum of the times: ");
+//   printTime(sum);
+//   time dif = sub_time(a,b);
+//   printf("\nDif of the times: ");
+//   printTime(dif);
+//
+// }
+//
+//
