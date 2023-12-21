@@ -42,6 +42,7 @@ void display_list(Node *head)
         printf("%c", head->data);
         head = head->next;
     }
+    printf("\n");
 }
 
 Node *insert_at_beginning(Node *head, char input)
@@ -56,6 +57,41 @@ Node *insert_at_beginning(Node *head, char input)
         return head;
 
     return temp;
+}
+
+Node *insert_at_end(Node *head, char input)
+{
+    Node *N = head;
+    Node *temp = (Node *)malloc(sizeof(Node));
+    if (temp)
+    {
+      temp->data = input;
+      temp->next = nullptr;
+
+      if (!head)  // head is nullptr
+        return temp;
+
+      while(head->next) // move to tail
+        head = head->next;
+      
+      head->next = temp;
+
+    }
+    return N; // return the original head
+}
+
+Node *user_input(){
+  Node *HEAD = nullptr;
+  int n;
+  char x;
+  printf("Enter number of nodes: ");
+  scanf("%d",&n);
+  for(int i = 0; i < n; i++){
+    printf("[%2d] ",i);
+    scanf(" %c", &x);
+    HEAD = insert_at_end(HEAD, x);
+  }
+  return HEAD;
 }
 
 Node *insert_after_node(Node *head, char node_data, int pos)
@@ -117,4 +153,82 @@ Node *delete_node(Node *head, char node_data)
         }
     }
     return head;
+}
+
+Node *_insert_ascending_recr(Node *HEAD, Node *TEMP){
+
+  if (HEAD == nullptr || HEAD->data > TEMP->data)
+    // if HEAD is null or greater than TEMP then let TEMP point to HEAD
+    {
+    TEMP->next = HEAD;
+    return TEMP;
+    }
+  else
+    {
+    HEAD->next = _insert_ascending_recr(HEAD->next, TEMP);
+    return HEAD;
+    }
+
+}
+
+Node *insert_ascending(Node *HEAD, char X){
+  Node *TEMP = (Node*) malloc(sizeof(Node));
+  // allocate memory for the node
+  if (TEMP){
+    TEMP-> data = X;
+    // initiate recursion 
+    return _insert_ascending_recr(HEAD, TEMP);
+  }
+  return HEAD;
+
+}
+
+Node *trim(Node *HEAD){
+  Node *t = HEAD;
+  if (HEAD){
+    t = HEAD->next;
+    free(HEAD);
+  }
+  return t;
+}
+
+Node *swap(Node *HEAD){
+  char temp;
+  if (HEAD && HEAD->next){
+    temp = HEAD->data;
+    HEAD->data = HEAD->next->data;
+    HEAD->next->data = temp;
+  }
+  return HEAD;
+}
+
+Node *swap_adjacent_nodes(Node *HEAD){
+  Node *N = HEAD;
+  while(HEAD && HEAD->next){
+    HEAD = swap(HEAD); 
+    HEAD = HEAD->next->next;
+  }
+  return N;
+}
+
+Node *reverse_list(Node *HEAD){
+  Node *a, *b, *c;
+  if (!(HEAD && HEAD->next))
+    return HEAD;
+
+  // work on it
+  a = nullptr;
+  b = HEAD;
+  c = HEAD->next;
+
+  while(c){
+    b->next = a;
+
+    a = b;
+    b = c;
+    c = c->next;
+  }
+  c->next = b;
+
+  return c;
 }
