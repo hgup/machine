@@ -212,23 +212,21 @@ Node *swap_adjacent_nodes(Node *HEAD){
 }
 
 Node *reverse_list(Node *HEAD){
-  Node *a, *b, *c;
-  if (!(HEAD && HEAD->next))
-    return HEAD;
+  Node *a = nullptr;
+  Node *b = HEAD;
+  Node *c = HEAD ? HEAD->next : nullptr;
 
-  // work on it
-  a = nullptr;
-  b = HEAD;
-  c = HEAD->next;
+  printf("\n%c-%c\n",b->data, c->data);
 
   while(c){
-    b->next = a;
 
+    printf("\n%c-%c\n",b->data, c->data);
+    b->next = a;
     a = b;
     b = c;
     c = c->next;
   }
-  c->next = b;
+  b -> next = a; // wow, the power of tracing
 
-  return c;
+  return b;
 }

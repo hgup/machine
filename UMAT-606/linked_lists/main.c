@@ -82,9 +82,11 @@ int main()
     // swaptest = swap_adjacent_nodes(swaptest);
     // display_list(swaptest);
 
-    Node *revtest = create_list_from_string("as");
+    Node *revtest = create_list_from_string("sairam");
     revtest = reverse_list(revtest);
     display_list(revtest);
+    // revtest = swap_adjacent_nodes(revtest);
+    // display_list(revtest);
     
     return 0;
 }
