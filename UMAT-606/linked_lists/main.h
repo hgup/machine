@@ -20,3 +20,6 @@ Node *insert_ascending(Node *head, char X);
 Node *trim(Node *head);
 Node *swap_adjacent_nodes(Node *HEAD);
 Node *reverse_list(Node *HEAD);
+Node *union_list(Node*HEAD1, Node *HEAD2);
+Node *intersection_list(Node*HEAD1, Node *HEAD2);
+Node *concat_list(Node*HEAD1, Node *HEAD2);

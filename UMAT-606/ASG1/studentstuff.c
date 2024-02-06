@@ -9,7 +9,6 @@ typedef struct stu{
     char grade, name[40], gender;
     date DOB;
     year YOJ;
-    struct stu *s;
 } student;
 
 void enterStudent(int index, student *stu){
@@ -34,7 +33,7 @@ void printStudent(student stu){
 }
 
 int main(){
-  student a;
-  enterStudent(1, a.s);
+  student a = (student) malloc(sizeof(student));
+  enterStudent(1, &a);
   printStudent(a);
 }

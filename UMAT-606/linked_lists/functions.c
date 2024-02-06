@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 Node *create_list_from_string(char str[])
 {
@@ -229,4 +230,86 @@ Node *reverse_list(Node *HEAD){
   b -> next = a; // wow, the power of tracing
 
   return b;
+}
+
+Node *union_list(Node *HEAD1, Node *HEAD2){
+  Node *HEAD_NEW = (Node *)malloc(sizeof(Node));  // keep it fixed (NULL val)
+  Node *temp = HEAD_NEW;  // work on this
+
+  while(HEAD1 && HEAD2){
+    temp->next = (Node *)malloc(sizeof(Node));  // create a new node
+    temp = temp->next;
+    if (HEAD1->data == HEAD2->data){ // increase both
+      temp->data = HEAD1->data;
+      HEAD1= HEAD1->next;
+      HEAD2= HEAD2->next;
+    }
+    else if (HEAD1->data < HEAD2->data){ // increase 1
+      temp->data = HEAD1->data;
+      HEAD1= HEAD1->next;
+    }
+    else // HEAD1->data > HEAD2->data // increase 2
+    {
+      temp->data = HEAD2->data;
+      HEAD2= HEAD2->next;
+    } 
+  }
+  Node *HEAD = HEAD1 ? HEAD1 : HEAD2;
+  while (HEAD){
+    temp->next = (Node *)malloc(sizeof(Node)); 
+    temp = temp->next;
+    temp->data = HEAD->data;
+    HEAD = HEAD->next;
+  }
+
+  temp = HEAD_NEW->next;
+  free(HEAD_NEW);
+  return(temp);
+}
+
+Node *intersection_list(Node *HEAD1, Node *HEAD2){
+  Node *HEAD_NEW = (Node *)malloc(sizeof(Node));  // keep it fixed (NULL val)
+  Node *temp = HEAD_NEW;  // work on this
+
+  while(HEAD1 && HEAD2){
+    temp->next = (Node *)malloc(sizeof(Node));  // create a new node
+    temp = temp->next;
+    if (HEAD1->data == HEAD2->data){ // increase both
+      temp->data = HEAD1->data;
+      HEAD1= HEAD1->next;
+      HEAD2= HEAD2->next;
+    }
+    else if (HEAD1->data < HEAD2->data) // increase 1
+      HEAD1= HEAD1->next;
+    else // HEAD1->data > HEAD2->data // increase 2
+      HEAD2= HEAD2->next;
+  }
+
+  // a standard thing to keep track of the first node
+  temp = HEAD_NEW->next;
+  free(HEAD_NEW);
+  return(temp);
+}
+
+
+Node *concat_list(Node *HEAD1, Node *HEAD2){
+  Node *HEAD_NEW = (Node *)malloc(sizeof(Node));  // keep it fixed (NULL val)
+  Node *temp = HEAD_NEW;  // work on this
+
+  while(HEAD1){
+    temp->next = malloc(sizeof(Node));
+    temp= temp->next;
+    temp->data = HEAD1->data;
+    HEAD1 = HEAD1->next;
+  }
+  while(HEAD2){
+    temp->next = malloc(sizeof(Node));
+    temp= temp->next;
+    temp->data = HEAD2->data;
+    HEAD2 = HEAD2->next;
+  }
+
+  temp = HEAD_NEW->next;
+  free(HEAD_NEW);
+  return temp;
 }
