@@ -3,6 +3,8 @@
 
 Node *create_list_from_string(char str[])
 {
+
+    // changes
     Node *temp = nullptr, *N = nullptr;
 
     Node *head = (Node *)malloc(sizeof(Node));
