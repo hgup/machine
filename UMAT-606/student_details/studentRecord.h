@@ -2,17 +2,18 @@
 
   #include <stdio.h>
   #include <stdlib.h>
+  #include <string.h>
   
 #endif // !STD
  
 #ifndef STU_DETAILS
 
-struct  studentRecord{
+typedef struct  studentRecord{
 	char  name[50];
 	float age;
 	int regdNo;
 	float gpa;
-};
+} Student;
 /*
  * Appends student record at the end of file
  */
