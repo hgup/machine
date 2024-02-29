@@ -17,4 +17,3 @@ functions.o: functions.c
 
 clear:
 	rm *.o
-

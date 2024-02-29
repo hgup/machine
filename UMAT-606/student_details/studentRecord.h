@@ -4,12 +4,15 @@
   #include <stdlib.h>
   #include <string.h>
   
+  
 #endif // !STD
  
 #ifndef STU_DETAILS
 
+#define MAX_NAME_SIZE 50
+
 typedef struct  studentRecord{
-	char  name[50];
+	char  name[MAX_NAME_SIZE];
 	float age;
 	int regdNo;
 	float gpa;
