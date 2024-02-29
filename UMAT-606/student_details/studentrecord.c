@@ -22,32 +22,36 @@
 int main(){
   
   FILE* fp = fopen(FILENAME, "a+b");
-  Student *students[NUM_OF_STUDENTS]; // array of pointers
-
-  students[0] = malloc(sizeof(Student));
-  strcpy(students[0]->name,"Hursh Gupta");
-  students[0]->regdNo = 211219;
-  students[0]->gpa = 8.1;
-  students[0]->age = 21;
+  Student *student;
+  student = malloc(sizeof(Student));
 
   if(!fp){
     return EROFS;
   }
 
-  // fwrite(students[0],sizeof(Student),1,fp);
-  // fwrite(&s,sizeof(Student),1,fp);
+  // strcpy(student->name,"Hursh Gupta");
+  // student->regdNo = 211219;
+  // student->gpa = 8.1;
+  // student->age = 21;
+  // fwrite(student,sizeof(Student),1,fp);
   //
-  // fsetpos(fp,SEEK_SET);
+  // strcpy(student->name,"Siba Charan");
+  // student->regdNo = 211214;
+  // student->gpa = 8.8;
+  // student->age = 22;
+  // fwrite(student,sizeof(Student),1,fp);
 
-  Student *s = students[0];
-  while(fread(s,sizeof(Student),1,fp)){
-    if(s->regdNo == 211219){
-      printf("%s\n",s->name);
-      printf("%f\n",s->age);
-      printf("%f\n",s->gpa);
+
+
+  while(fread(student,sizeof(Student),1,fp)){
+    if(student->regdNo == 211219){
+      printf("%s\n",student->name);
+      printf("%f\n",student->age);
+      printf("%f\n",student->gpa);
     }
   }
 
+  printf("done!\n");
   fclose(fp);
   return 0;
 }
