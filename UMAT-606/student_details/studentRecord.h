@@ -10,6 +10,7 @@
 #ifndef STU_DETAILS
 
 #define MAX_NAME_SIZE 50
+#define FILENAME "sdetails"
 
 typedef struct  studentRecord{
 	char  name[MAX_NAME_SIZE];
@@ -20,7 +21,7 @@ typedef struct  studentRecord{
 /*
  * Appends student record at the end of file
  */
-	void insertRecord(FILE* fp);		
+	int insertRecord(FILE* fp);		
 
 /* 
  * Display all students records in stored in file
@@ -30,12 +31,11 @@ typedef struct  studentRecord{
 /* 
  * Modify gpa of student record with RegdNo						  
 */
-	void modifyRecord(FILE* fp, int RegdNo, float newGPA);
+	void modifyRecord(FILE** fpp, int RegdNo, float newGPA, char* message);
 
 /* 
  * Delete a record from the file with the matching RegdNo
 */
-	void deleteRecord(FILE *fp, float RegdNo);
-                        	
+	void deleteRecord(FILE **fpp, int RegdNo, char* message);
 
 #endif // !STU_DETAILS

@@ -2,24 +2,24 @@
 #include "studentRecord.h"
 #include <errno.h>
 
-#define FILENAME "studentdetails"
-#define NUM_OF_STUDENTS 100
-
 int main(){
   
   FILE* fp = fopen(FILENAME, "a+b");
   char ch;
   int regdNo, gpa;
+  char message[100] = "Hello!";
+  int running = 1; // is the program running?
 
   if(!fp){
-    return EROFS;
+    printf("Data file doesn't exist");
+    return -1;
   }
-
-  int running = 1; // is the program running?
+  fp = fopen(FILENAME, "r+b");
   while(running){
     system("clear");
     ch = 0;
     printf("\n WELCOME TO SASTA \"STUDENT MANAGEMENT SYSTEM\" (SSMS):\n");
+    printf("\n\nSYSTEM:[%s]",message);
     printf("\n\nChoose your option:\n\n[1]\tInsert\n[2]\tDelete\n[3]\tUpdate\n[4]\tDisplay\n[q]\tQuit\n");
     printf("\nChoose Option: ");
     scanf(" %c",&ch);
@@ -36,15 +36,15 @@ int main(){
 
       // Insert
       case '1': 
-        insertRecord(fp);
+        if(insertRecord(fp)) strcpy(message, "Successfully added new student");
         break; 
 
       // Delete
       case '2':
         printf("Enter RegdNo for student to be deleted (0 to cancel): ");
         scanf("%d",&regdNo);
-        if (regdNo) deleteRecord(fp,regdNo);
-        else printf("OPERATION CANCELLED");
+        if (regdNo) deleteRecord(&fp,regdNo, message);
+        else strcpy(message, "OPERATION CANCELLED");
         break; 
 
       // Update
@@ -54,21 +54,22 @@ int main(){
         if (regdNo){
           printf("Enter GPA(UPDATED): ");
           scanf("%d",&gpa);
-          modifyRecord(fp,regdNo,gpa);
-        } else printf("OPERATION CANCELLED");
+          modifyRecord(&fp,regdNo,gpa, message);
+        } else sprintf(message,"OPERATION CANCELLED");
         break; 
 
       // Display
       case '4':
+        system("clear");
         displayRecords(fp);
         break; 
 
       // Invalid entry
       default:
-        printf("Invalid Entry! Please enter options [1-4]\n");
+        sprintf(message, "Invalid Entry! Please enter options [1-4]");
         break; 
     }
-    if (ch != 'q'){
+    if (ch == '4'){
       printf("\nPress any key to continue;");
       getchar();
       getchar();
