@@ -9,12 +9,12 @@ int main(){
   int regdNo, gpa;
   char message[100] = "Hello!";
   int running = 1; // is the program running?
+  
 
   if(!fp){
     printf("Data file doesn't exist");
     return -1;
   }
-  fp = fopen(FILENAME, "r+b");
   while(running){
     system("clear");
     ch = 0;

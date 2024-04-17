@@ -9,7 +9,7 @@
  
 #ifndef STU_DETAILS
 
-#define MAX_NAME_SIZE 50
+#define MAX_NAME_SIZE 40
 #define FILENAME "sdetails"
 
 typedef struct  studentRecord{

@@ -30,4 +30,14 @@ void tabulate_chars(char* filename);
  */
 void copy_file(char *src, char*dest);
 
+/*
+ * Delete a specific line from the file
+ * 
+ */
+void delete_line(char *src, int n);
+
+void merge_files(char* file1, char*  file2, char* output);
+
+void readline(char* s, FILE* f, int pos);
+
 #endif // !FILESTUFF

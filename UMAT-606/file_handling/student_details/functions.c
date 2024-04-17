@@ -38,14 +38,17 @@ void displayRecords(FILE* fp){
   fseek(fp,0,SEEK_SET);
   Student *student = malloc(sizeof(Student));
 
-  printf("\n========================\nALL STUDENT DETAILS\n========================\n");
+  printf("\n                        \nALL STUDENT DETAILS\n                        \n");
+  printf("\n╔═════════╦════════════════════════════════════════╦══════════╦══════════╗");
+  printf("\n║  Regd   ║             Name                       ║   Age    ║    GPA   ║");
+  printf("\n╠═════════╬════════════════════════════════════════╬══════════╬══════════╣");
   while(fread(student,sizeof(Student),1,fp)){
-      printf("REGD: %d\n",student->regdNo);
-      printf("\tName: %s\n",student->name);
-      printf("\tAge:  %.0f\n",student->age);
-      printf("\tGPA:  %.1f\n\n",student->gpa);
+      printf("\n║%9d║",student->regdNo);
+      printf("%40s║",student->name);
+      printf("%10.0f║",student->age);
+      printf("%10.1f║",student->gpa);
   }
-  printf("\n========================\nEND\n========================\n");
+  printf("\n╚═════════╩════════════════════════════════════════╩══════════╩══════════╝");
 }
 
 void modifyRecord(FILE** fpp, int RegdNo, float newGPA, char* message){
@@ -77,7 +80,6 @@ void modifyRecord(FILE** fpp, int RegdNo, float newGPA, char* message){
       fread(temp1, read, 1, fp);          // read [a, b)
       fseek(fp,sizeof(Student),SEEK_CUR); // skip {b}
       fread(temp2, remaining, 1, fp);     // read (b, c]
-      // printf("read the required data, file pointer at the end: %ld \n",ftell(fp));
       
       // close old pointer
       fclose(fp);
@@ -85,15 +87,16 @@ void modifyRecord(FILE** fpp, int RegdNo, float newGPA, char* message){
 
       // create new file
       fclose(fopen(FILENAME, "w+b"));
-      // printf("created new file %s\n",FILENAME);
-
       fp = fopen(FILENAME, "a+b");
-      // printf("opened file in a+b mode %p\n", fp);
-      // printf("wrote %ld times to file from 'read'\n",
       fwrite(temp1, read, 1, fp);//);
+      
+      // update GPA
+      oldGPA = student->gpa;
+      student->gpa = newGPA;
       fwrite(student,sizeof(Student),1,fp);
-      // printf("wrote %ld times to file from 'remaining'\n",
-      fwrite(temp2, remaining, 1, fp);//);
+
+      // replace in place with the old file
+      fwrite(temp2, remaining, 1, fp);
       sprintf(message,"REGD: %d, update GPA: %.1f -> %.1f",student->regdNo, oldGPA, student->gpa);
     }
   }
